@@ -1,0 +1,6 @@
+{
+  "ignore": ["fe", "fe-dist", "server-dist", "node_modules"],
+  "watch": ["server"],
+  "exec": "npm run server:start",
+  "ext": "ts"
+}
