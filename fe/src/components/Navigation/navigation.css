@@ -1,0 +1,8 @@
+.navList {
+  padding-left: 0;
+}
+
+.navList li {
+  display: inline;
+  margin-right: 30px;
+}

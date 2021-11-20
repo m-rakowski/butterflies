@@ -1,0 +1,11 @@
+.image {
+  max-width: 100%;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.species {
+  font-style: italic;
+}
