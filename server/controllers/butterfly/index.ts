@@ -39,4 +39,30 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+router.post('/:id/toggle-wishlist-star', async (req, res) => {
+  if (req.params.id) {
+    try {
+      const found: Butterfly = await knex('butterfly')
+        .where({ id: req.params.id })
+        .first();
+
+      if (found) {
+        await knex('butterfly')
+          .where({ id: found.id })
+          .update({ on_the_wishlist: !found.on_the_wishlist });
+
+        res.sendStatus(200);
+      } else {
+        res.sendStatus(404);
+      }
+    } catch (error) {
+      res.status(404)
+        .json(error);
+    }
+  } else {
+    res.status(400)
+      .send('Please specify an ID');
+  }
+});
+
 export { router };
