@@ -25,4 +25,18 @@ router.post('/', async (req, res) => {
   }
 });
 
+
+router.delete('/:id', async (req, res) => {
+  if (req.params.id) {
+    try {
+      const found = await knex('butterfly').where({ id: req.params.id }).del();
+      res.status(200).send();
+    } catch (error) {
+      res.status(404).json(error);
+    }
+  } else {
+    res.status(400).send('Please specify an ID');
+  }
+});
+
 export { router };
