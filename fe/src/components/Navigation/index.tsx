@@ -7,6 +7,7 @@ const Navigation = () => <nav>
   <ul className={styles.navList}>
     <li><Link to="/butterflies">Butterflies</Link></li>
     <li><Link to="/create">Create Butterfly</Link></li>
+    <li><Link to="/wishlist">Wishlist</Link></li>
   </ul>
 </nav>
 
