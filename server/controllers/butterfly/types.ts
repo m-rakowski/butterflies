@@ -3,5 +3,6 @@ export type Butterfly = {
   name: string,
   species: string,
   image_url: string,
-  link: string
+  link: string,
+  on_the_wishlist?: boolean
 }

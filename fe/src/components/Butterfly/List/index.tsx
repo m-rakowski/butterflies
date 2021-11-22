@@ -13,6 +13,21 @@ const ButterflyList = () => {
       setButterflies(butterflies.filter((butterfly) => butterfly.id !== id));
     });
   };
+  const toggleWishlist = (id: number) => {
+    axios.post(`http://localhost:8000/butterflies/${id}/toggle-wishlist-star`).then(() => {
+      const newList = butterflies.map((item: Butterfly) => {
+        if (item.id === id) {
+          const updatedItem: Butterfly = {
+            ...item,
+            on_the_wishlist: !item.on_the_wishlist
+          };
+          return updatedItem;
+        }
+        return item;
+      });
+      setButterflies(newList);
+    });
+  };
   useEffect(() => {
     axios
       .get<Butterfly[]>('http://localhost:8000/butterflies')
@@ -22,9 +37,12 @@ const ButterflyList = () => {
   return <div className={styles.grid}>
     {
       butterflies.map(b => <div key={b.id} className={styles.item}>
-          <div className={styles.itemWrapper}>
-          <ButterflyCard butterfly={b} onDelete={deleteButterflyWithId}/>
-          </div>
+        <div className={styles.itemWrapper}>
+          <ButterflyCard butterfly={b}
+                         onDelete={deleteButterflyWithId}
+                         onToggleWishlist={toggleWishlist}
+                         />
+        </div>
       </div>)
     }
     </div>
