@@ -7,6 +7,7 @@ const router: express.Router = new (express.Router as any)()
 router.get('/', async (req, res) => {
   const butterflies = await knex('butterfly')
     .select<Butterfly[]>('*')
+    .where(req.query);
 
   res
     .status(200)
