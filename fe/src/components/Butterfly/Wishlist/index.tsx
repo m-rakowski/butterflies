@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Box, SimpleGrid } from '@chakra-ui/react';
 import { Butterfly } from '../../../../../server/controllers/butterfly/types';
 import ButterflyCard from '../Card';
-
-const styles = require('./list.css').default;
 
 const Wishlist = () => {
   const [butterflies, setButterflies] = useState<Butterfly[]>([]);
@@ -14,17 +13,17 @@ const Wishlist = () => {
       .then((bfs) => setButterflies(bfs.data));
   }, []);
 
-  return <div className={styles.grid}>
+  return (<SimpleGrid minChildWidth="240px" spacing="40px">
     {
-      butterflies.map((b) => <div key={b.id} className={styles.item}>
-        <div className={styles.itemWrapper}>
-          <ButterflyCard butterfly={b}
-                         readonlyMode={true}
-                         />
-        </div>
-      </div>)
+      butterflies.map((b: Butterfly) => (
+        <Box key={b.name}>
+          <ButterflyCard
+            butterfly={b}
+            readonlyMode={true}/>
+        </Box>
+      ))
     }
-    </div>;
+  </SimpleGrid>);
 };
 
 export default Wishlist;

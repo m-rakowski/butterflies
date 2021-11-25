@@ -1,32 +1,33 @@
-import React, { useState, useEffect } from 'react'
-import { Butterfly } from '../../../../../server/controllers/butterfly/types'
-import ButterflyCard from '../Card'
-import axios from 'axios'
-
-const styles = require('./list.css').default
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Box, SimpleGrid } from '@chakra-ui/react';
+import { Butterfly } from '../../../../../server/controllers/butterfly/types';
+import ButterflyCard from '../Card';
 
 const ButterflyList = () => {
-  const [butterflies, setButterflies] = useState<Butterfly[]>([])
+  const [butterflies, setButterflies] = useState<Butterfly[]>([]);
 
   const deleteButterflyWithId = (id: number) => {
-    axios.delete(`http://localhost:8000/butterflies/${id}`).then(() => {
-      setButterflies(butterflies.filter((butterfly) => butterfly.id !== id));
-    });
+    axios.delete(`http://localhost:8000/butterflies/${id}`)
+      .then(() => {
+        setButterflies(butterflies.filter((butterfly) => butterfly.id !== id));
+      });
   };
   const toggleWishlist = (id: number) => {
-    axios.post(`http://localhost:8000/butterflies/${id}/toggle-wishlist-star`).then(() => {
-      const newList = butterflies.map((item: Butterfly) => {
-        if (item.id === id) {
-          const updatedItem: Butterfly = {
-            ...item,
-            on_the_wishlist: !item.on_the_wishlist
-          };
-          return updatedItem;
-        }
-        return item;
+    axios.post(`http://localhost:8000/butterflies/${id}/toggle-wishlist-star`)
+      .then(() => {
+        const newList = butterflies.map((item: Butterfly) => {
+          if (item.id === id) {
+            const updatedItem: Butterfly = {
+              ...item,
+              on_the_wishlist: !item.on_the_wishlist,
+            };
+            return updatedItem;
+          }
+          return item;
+        });
+        setButterflies(newList);
       });
-      setButterflies(newList);
-    });
   };
   useEffect(() => {
     axios
@@ -34,18 +35,18 @@ const ButterflyList = () => {
       .then((bfs) => setButterflies(bfs.data));
   }, []);
 
-  return <div className={styles.grid}>
+  return (<SimpleGrid minChildWidth="240px" spacing="40px">
     {
-      butterflies.map(b => <div key={b.id} className={styles.item}>
-        <div className={styles.itemWrapper}>
-          <ButterflyCard butterfly={b}
-                         onDelete={deleteButterflyWithId}
-                         onToggleWishlist={toggleWishlist}
-                         />
-        </div>
-      </div>)
+      butterflies.map((b: Butterfly) => (
+        <Box key={b.name}>
+          <ButterflyCard
+            butterfly={b}
+            onDelete={deleteButterflyWithId}
+            onToggleWishlist={toggleWishlist}/>
+        </Box>
+      ))
     }
-    </div>
-}
+  </SimpleGrid>);
+};
 
-export default ButterflyList
+export default ButterflyList;
