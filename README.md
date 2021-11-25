@@ -8,6 +8,14 @@ It consists of 2 parts:
 
 The project is written in **Typescript**
 
+ 
+## Screenshots
+<p style="float: left">
+<img src="https://user-images.githubusercontent.com/15091521/143333281-3ae137c8-5c4c-449a-8d4e-65fafe971f7d.png" width="500"/>
+<img src="https://user-images.githubusercontent.com/15091521/143333293-b924225c-7b80-4981-99b7-e8d0cd7c9844.png" height="300"/>
+<img src="https://user-images.githubusercontent.com/15091521/143333296-10f5d04f-c4c7-4cc2-9cda-705005892487.png" height="300"/>
+</p>
+
 ## Backend
 
 The backend is an ExpressJS REST API server. 
