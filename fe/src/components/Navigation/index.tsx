@@ -35,7 +35,7 @@ const Links: LinkLabelPath [] = [
   },
   {
     label: 'Wishlist',
-    path: 'Wishlist',
+    path: 'wishlist',
   },
 ];
 
