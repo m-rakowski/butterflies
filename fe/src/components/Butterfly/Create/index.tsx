@@ -61,7 +61,7 @@ const CreateButterfly = () => {
               <FormLabel htmlFor="name">Butterfly name</FormLabel>
               <Input
                 id="name"
-                placeholder="name"
+                placeholder="eg. Monarch butterfly"
                 {...register('name', {
                   required: 'This is required',
                   minLength: {
@@ -80,7 +80,7 @@ const CreateButterfly = () => {
               <FormLabel htmlFor="species">Species</FormLabel>
               <Input
                 id="species"
-                placeholder="species"
+                placeholder="eg. Danaus plexippus"
                 {...register('species', {
                   required: 'This is required',
                 })}
@@ -95,7 +95,7 @@ const CreateButterfly = () => {
               <FormLabel htmlFor="image_url">Link to the picture</FormLabel>
               <Input
                 id="image_url"
-                placeholder="image_url"
+                placeholder="eg. https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Monarch_Butterfly_Danaus_plexippus_Male_2664px.jpg/440px-Monarch_Butterfly_Danaus_plexippus_Male_2664px.jpg"
                 {...register('image_url', {
                   validate: (value) => isURL(value) || 'Field value has to be a valid url',
                   required: 'This is required',
@@ -111,7 +111,7 @@ const CreateButterfly = () => {
               <FormLabel htmlFor="link">Link to wiki page</FormLabel>
               <Input
                 id="link"
-                placeholder="link"
+                placeholder="eg. https://en.wikipedia.org/wiki/Monarch_butterfly"
                 {...register('link', {
                   validate: (value) => isURL(value) || 'Field value has to be a valid url',
                   required: 'This is required',
@@ -131,91 +131,6 @@ const CreateButterfly = () => {
       </form>
     </VStack>
   );
-  //
-  // return (
-  //   <div>
-  //     <form
-  //       className={styles.form}
-  //       onSubmit={handleSubmit(sendButterfly)}
-  //     >
-  //       <label htmlFor="name">name</label>
-  //       <input
-  //         {...register('name', { required: 'This field is required' })}
-  //         id="name"
-  //       />
-  //       {errors.name && <p className={styles.errorMessage}
-  //       >{errors.name.message}</p>}
-  //
-  //       <label htmlFor="species">species</label>
-  //       <input
-  //         {...register('species', {
-  //           required: 'This field is required',
-  //           maxLength: {
-  //             value: 20,
-  //             message: 'You exceeded the max length',
-  //           },
-  //         })}
-  //       />
-  //       {errors.species && <p className={styles.errorMessage}
-  //       >{errors.species.message}</p>}
-  //
-  //       <label htmlFor="image_url">image url</label>
-  //       <input
-  //         {...register('image_url', {
-  //           required: 'This field is required',
-  //         })}
-  //       />
-  //       {errors.image_url && <p className={styles.errorMessage}
-  //       >{errors.image_url.message}</p>}
-  //
-  //
-  //       <label htmlFor="link">link</label>
-  //       <input
-  //         {...register('link', {
-  //           required: 'This field is required',
-  //         })}
-  //       />
-  //       {errors.link && <p className={styles.errorMessage}
-  //       >{errors.link.message}</p>}
-  //
-  //       <button type="submit">Submit</button>
-  //     </form>
-  //   </div>
-  // );
 };
-
-// <SimpleGrid columns={2} columnGap={3} rowGap={6} w="full">
-//
-//   <GridItem colSpan={colSpan}>
-//     <FormControl>
-//       <FormLabel>Name</FormLabel>
-//       <Input placeholder="John"/>
-//     </FormControl>
-//   </GridItem>
-//   <GridItem colSpan={colSpan}>
-//     <FormControl>
-//       <FormLabel>Species</FormLabel>
-//       <Input placeholder="Doe"/>
-//     </FormControl>
-//   </GridItem>
-//   <GridItem colSpan={2}>
-//     <FormControl>
-//       <FormLabel>Image URL</FormLabel>
-//       <Input placeholder="Blvd. Broken Dreams 21"/>
-//     </FormControl>
-//   </GridItem>
-//   <GridItem colSpan={colSpan}>
-//     <FormControl>
-//       <FormLabel>Link</FormLabel>
-//       <Input placeholder="San Francisco"/>
-//     </FormControl>
-//   </GridItem>
-//   <GridItem colSpan={2}>
-//     <Button variant="primary" size="lg" w="full" isLoading={isSubmitting} type="submit">
-//       Let's create a butterfly!
-//     </Button>
-//   </GridItem>
-// </form>
-// </SimpleGrid>
 
 export default CreateButterfly;
