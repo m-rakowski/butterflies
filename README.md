@@ -7,7 +7,6 @@ It consists of 2 parts:
 - **frontend** *(SPA built via React)*
 
 The project is written in **Typescript**
-
  
 ## Screenshots
 <p style="float: left">
@@ -15,6 +14,39 @@ The project is written in **Typescript**
 <img src="https://user-images.githubusercontent.com/15091521/143333293-b924225c-7b80-4981-99b7-e8d0cd7c9844.png" height="300"/>
 <img src="https://user-images.githubusercontent.com/15091521/143333296-10f5d04f-c4c7-4cc2-9cda-705005892487.png" height="300"/>
 </p>
+
+
+## User story #1 - Create
+
+_As a user, I should be able to create a new butterfly_
+
+__Acceptance criteria:__
+
+1. There is separate tab for creating butterflies
+2. The form should be validated. An error message appears next to each incorrectly filled out field
+3. Backend endpoints should also be validated
+
+
+## User story #2 - Delete
+
+_As a user, I should be able to remove butterflies from the list_
+
+__Acceptance criteria:__
+
+1. There is a delete button next to each of the butterflies
+2. Upon clicking, the butterfly disappears from the list
+
+
+## User story #3 - Wishlist
+
+_As a user, I should be able to save butterflies I like into a separate wishlist_
+
+__Acceptance criteria:__
+
+1. A star next to a butterfly indicates it is on the wishlist
+2. The star can be toggled on and off
+3. There is a separate tab listing butterflies picked on the primary list
+
 
 ## Backend
 
@@ -31,45 +63,6 @@ It returns a list of butterfiles (check the butterfly schema in `server/controll
 
 Frontend is an SPA built on top of React. For routing we use `react-router-dom` lib. All code related to the frontend is located in the `fe` folder.
 
-## Task
-
-The Butterfly app is already a pretty great app, but we think it would be even better if it let users create and delete butterflies. 
-
-Your task is to implement:
-1. An endpoint which receives a new butterfly and stores it in the database.
-2. a form on the frontend for adding a new butterfly to the collection, available somewhere in the UI
-3. An endpoint which deletes the specified Butterfly
-4. A **delete** button on the butterfly card
-
-### Bonus task
-Implement **wishlist** functionality. Add ability to add butterfiles to the wishlist and then view wishlist on a sepparate page.
-
-### What we're looking for
-* Your code should be extensible and reusable
-* Your code should be tidy and adhere to conventions
-* Your changes should be well-scoped and explained in the write-up
-* Your write-up should be thoughtful and coherent
-
-You should also provide a small **write-up** that explains the decisions (for instance, the HTTP verbs for new endpoints) and trade-offs you made. If you add any new dependencies, spend some time talking about why you chose them.
-
-You are free to refactor or improve any code you think should be refactored, but please include a note about such changes in your write-up. Any changes you make should be scoped and explained as though you are opening a pull request against an existing codebase used in a production API service.
-
-❗️ If you have any questions or concerns, please do not hesitate to contact us!
-
-### Scoring rubric
-
-You will be scored on the following aspects of your work:
-
-* Endpoint implementation
-* Endpoint design
-* Appropriate testing of new code
-* Tidiness and adherence to conventions
-* Appropriate refactoring
-* Communication in the write-up
-
-0 = poor 1 = adequate 2 = exceptional
-
-The maximum possible score is 12.
 
 ## Setup
 
@@ -116,6 +109,3 @@ It will generate new seeds template in `seeds` folder. To apply seeds run:
 ```sh
 npm run db:seed:run
 ```
-
-## Notes
-In general you can use any technology/tool that you want. E.g CSS pre/post processors, state managers, query-builders/ORM ...etc. If you want to change existing code - please do :) 
